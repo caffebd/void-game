@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pickup_coin.mp3-c9596783c6b479143c1685b214c6b9e0.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Pickup_coin.mp3"
+dest_files=[ "res://.import/Pickup_coin.mp3-c9596783c6b479143c1685b214c6b9e0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

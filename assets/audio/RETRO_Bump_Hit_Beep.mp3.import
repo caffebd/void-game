@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RETRO_Bump_Hit_Beep.mp3-a20dbb40acfa6f91454c5d76102c7c52.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/RETRO_Bump_Hit_Beep.mp3"
+dest_files=[ "res://.import/RETRO_Bump_Hit_Beep.mp3-a20dbb40acfa6f91454c5d76102c7c52.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
