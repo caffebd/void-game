@@ -9,12 +9,21 @@ func _ready():
 	pass 
 
 func shoot(pos, dir):
-#	if GlobalVariables.bullets > 0 :
+#	if GlobalVariables.ammo > 0 :
 	global_position = pos
 	scale.x = dir.x
 	velocity = dir * speed
-#		GlobalVariables.bullets -= 1
-#		GlobalSignals.emit_signal("Bullets_left")
+#		GlobalVariables.ammo -= 1
+#		GlobalSignal.emit_signal("ammo_left")
+#	if GlobalVariables.ammo == 0:
+#		GlobalVariables.max_ammo -= 10
+#		GlobalVariables.ammo += 10
+#		GlobalSignal.emit_signal("ammo_left")
+#		GlobalSignal.emit_signal("max_ammo_left")
+#	elif GlobalVariables.max_ammo == 0:
+#		print("No_ammo")
+	
+	
 
 func _process(delta):
 	var collided = move_and_collide(velocity * delta)

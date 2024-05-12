@@ -115,3 +115,5 @@ texture = ExtResource( 3 )
 
 [node name="gunpos" type="Position2D" parent="attack_node"]
 position = Vector2( 6, 5 )
+
+[node name="HealthTimer" type="Timer" parent="."]

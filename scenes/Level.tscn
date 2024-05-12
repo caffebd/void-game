@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/tiles/dungeon_32.png" type="Texture" id=2]
-[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=3]
-[ext_resource path="res://scripts/Level.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Level.gd" type="Script" id=3]
+[ext_resource path="res://assets/tiles/dungeon_32.png" type="Texture" id=4]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ui.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -25,7 +27,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="TileSet" id=7]
 0/name = "dungeon_32.png 0"
-0/texture = ExtResource( 2 )
+0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 128, 32, 32 )
@@ -52,7 +54,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 1/name = "dungeon_32.png 1"
-1/texture = ExtResource( 2 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 32, 128, 32, 32 )
@@ -79,7 +81,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 1/z_index = 0
 2/name = "dungeon_32.png 2"
-2/texture = ExtResource( 2 )
+2/texture = ExtResource( 4 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 64, 128, 32, 32 )
@@ -109,30 +111,36 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 937, 10 )
 
-[node name="Level" type="Node2D"]
-script = ExtResource( 4 )
+[node name="level" type="Node2D"]
+script = ExtResource( 3 )
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["walls"]]
 modulate = Color( 0.168627, 0.243137, 0.729412, 1 )
 tile_set = SubResource( 7 )
 cell_size = Vector2( 32, 32 )
+collision_layer = 65
+collision_mask = 129
 format = 1
-tile_data = PoolIntArray( 458751, 1, 0, 524287, 1, 0, 589823, 1, 0, 655359, 1, 0, 720895, 1, 0, 786431, 1, 0, 851967, 1, 0, 786432, 0, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 1, 0, 786444, 2, 0 )
+tile_data = PoolIntArray( 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 458751, 1, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 524287, 1, 0, 589823, 1, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 655359, 1, 0, 720895, 1, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 786431, 1, 0, 851967, 1, 0, 786432, 0, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 1, 0, 786444, 2, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786456, 0, 0, 786457, 0, 0, 786458, 0, 0, 786459, 0, 0, 786460, 0, 0, 786461, 0, 0, 786462, 0, 0 )
 
-[node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 142, 368 )
+[node name="enemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 236, 377 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
-limit_left = 0
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 TargetNodePath = NodePath("../player")
+
+[node name="ui" parent="Camera2D" instance=ExtResource( 6 )]
 
 [node name="fall_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fall_area"]
 position = Vector2( 554, 580 )
 shape = SubResource( 8 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 139, 351 )
 
 [connection signal="body_entered" from="fall_area" to="." method="_on_fall_area_body_entered"]
