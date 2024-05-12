@@ -2,25 +2,28 @@ extends CanvasLayer
  
 
 onready var health_bar = $MarginContainer/Row/TopRow/HealthSection/HealthBar
-onready var current_ammo = $MarginContainer/Row/TopRow/AmmoSection/CurrentAmmo
-onready var max_ammo = $MarginContainer/Row/TopRow/AmmoSection/MaxAmmo
+onready var current_ammo = $MarginContainer/Row/BottomRow/AmmoSection/CurrentAmmo
+onready var max_ammo = $MarginContainer/Row/BottomRow/AmmoSection/MaxAmmo
 onready var oxygen_bar = $MarginContainer/Row/TopRow/OxygenSection2/OxygenBar
 
 var time = 20
 
+var player_moving = false
 
 func _ready():
+	player_moving = false
 	GlobalSignal.connect("ammo_left", self, "_ammo_left")
-#	GlobalSignal.connect("max_ammo_left", self, "_max_ammo_left")
+	GlobalSignal.connect("start_ui", self, "_start_ui")
 	health_bar.value = GlobalVariables.player_health
 	oxygen_bar.value = GlobalVariables.player_oxygen
 	current_ammo.text = str(GlobalVariables.ammo)
 	max_ammo.text = str(GlobalVariables.max_ammo)
 
-#func max_ammo_left():
-#	max_ammo.text = str(GlobalVariables.max_ammo)
-#	current_ammo.text = str(GlobalVariables.ammo)
-#
+
+func _start_ui():
+	player_moving = true
+	
+
 
 func _ammo_left():
 	current_ammo.text = str(GlobalVariables.ammo)
@@ -33,17 +36,16 @@ func _ammo_left():
 #		GlobalSignal.emit_signal("ammo_left")
 
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var life = time * delta/2
-	GlobalVariables.player_health -= life
-	health_bar.value = GlobalVariables.player_health
-	
-	var oxy = time * delta/5
-	GlobalVariables.player_oxygen -= oxy
-	oxygen_bar.value = GlobalVariables.player_oxygen
+	if player_moving == true:
+		var life = time * delta/5
+		GlobalVariables.player_health -= life
+		health_bar.value = GlobalVariables.player_health
+		
+		var oxy = time * delta/2
+		GlobalVariables.player_oxygen -= oxy
+		oxygen_bar.value = GlobalVariables.player_oxygen
 	
 	print(GlobalVariables.player_oxygen)
 

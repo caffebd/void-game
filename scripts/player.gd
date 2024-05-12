@@ -50,23 +50,24 @@ func _input(event):
 				var bullet = bullet_scene.instance()
 				get_parent().add_child(bullet)
 				bullet.shoot($attack_node/gunpos.global_position, Vector2($attack_node.scale.x,0))
-
-	
+				
+		else:
+			print(GlobalVariables.ammo)
 
 	if Input.is_action_pressed("left"):
+		GlobalSignal.emit_signal("start_ui")
 		direction.x -= speed
 		$playeranim.flip_h = true
 		$attack_node.scale.x = -1
-		
 		$playeranim.play("walk")
 		
 	elif Input.is_action_pressed("right"):
+		GlobalSignal.emit_signal("start_ui")
 		direction.x += speed
 		$playeranim.flip_h = false
 		$attack_node.scale.x = 1
-		
-		
 		$playeranim.play("walk")
+		
 	else:
 		$playeranim.play("idle")
 	

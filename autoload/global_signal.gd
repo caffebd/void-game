@@ -7,4 +7,4 @@ signal player_reset()
 
 signal current_health()
 signal ammo_left()
-signal max_ammo_left()
+signal start_ui()
