@@ -12,7 +12,7 @@ var start_position = Vector2.ZERO
 
 var bullet_scene = preload("res://scenes/bullet.tscn")
 
-
+var at_point = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -20,6 +20,7 @@ var bullet_scene = preload("res://scenes/bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalVariables.player_moving = true
 	start_position = global_position
 	start_position.y -= 100
 	print(start_position)
@@ -29,10 +30,40 @@ func _ready():
 	$HealthTimer.start()
 	
 func _respown_point(position):
+#	at_point = true
 	start_position = position
 
+#
+#func _collision_off():
+#	$playercollision.disabled = true
+
 func _player_reset():
-	global_position = start_position
+	
+#	if at_point == true:
+	direction = Vector2.ZERO
+	#$PortalSound.play()
+	
+	#call_deferred("_collision_off")
+	$CPUParticles2D.emitting = true
+	var tween = create_tween()
+	tween.tween_property($CPUParticles2D, "modulate:a", 0.0, 1.0)
+	yield(tween, "finished")
+	GlobalVariables.player_moving = false
+	visible = false
+	call_deferred("_spown")
+#		global_position = start_position
+	
+
+func _spown():
+	var tween2 = create_tween()
+	tween2.tween_property(self, "global_position", start_position, 1.0)
+	yield (tween2, "finished")
+	GlobalSignal.emit_signal("start_ui")
+	visible = true
+	$CPUParticles2D.emitting = false
+	$playercollision.disabled = false
+	GlobalVariables.player_moving = true
+	
 
 
 func _player_fell():
@@ -40,8 +71,6 @@ func _player_fell():
 	print(global_position)
 
 func _input(event):
-	
-	direction.x = 0
 	
 	if Input.is_action_just_pressed("attack"):
 		if !GlobalVariables.ammo == 0:
@@ -53,29 +82,34 @@ func _input(event):
 				get_parent().add_child(bullet)
 				bullet.shoot($attack_node/gunpos.global_position, Vector2($attack_node.scale.x,0))
 				
-		else:
-			print(GlobalVariables.ammo)
+		
 
+	
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	direction.x = 0
+	direction.y += gravity/2 * delta
+	
 	if Input.is_action_pressed("left"):
-		GlobalSignal.emit_signal("start_ui")
-		direction.x -= speed
-		$playeranim.flip_h = true
-		$attack_node.scale.x = -1
-		$playeranim.play("walk")
+		if GlobalVariables.player_moving == true:
+			GlobalSignal.emit_signal("start_ui")
+			direction.x -= speed
+			$playeranim.flip_h = true
+			$attack_node.scale.x = -1
+			$playeranim.play("walk")
 		
 	elif Input.is_action_pressed("right"):
-		GlobalSignal.emit_signal("start_ui")
-		direction.x += speed
-		$playeranim.flip_h = false
-		$attack_node.scale.x = 1
-		$playeranim.play("walk")
+		if GlobalVariables.player_moving == true:
+			GlobalSignal.emit_signal("start_ui")
+			direction.x += speed
+			$playeranim.flip_h = false
+			$attack_node.scale.x = 1
+			$playeranim.play("walk")
 		
 	else:
 		$playeranim.play("idle")
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	direction.y += gravity/2 * delta
 	
 	if GlobalVariables.ammo == 0 && !GlobalVariables.max_ammo == 0:
 		GlobalVariables.max_ammo -= 10
@@ -97,6 +131,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			direction.y = jump_speed
+			GlobalSignal.emit_signal("start_ui")
 	
 	direction = move_and_slide(direction,  Vector2.UP)
 	
