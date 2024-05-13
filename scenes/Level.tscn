@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/tiles/dungeon_32.png" type="Texture" id=4]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/respawn_point.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -142,5 +143,11 @@ shape = SubResource( 8 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 139, 351 )
+
+[node name="respawn_point" parent="." instance=ExtResource( 7 )]
+position = Vector2( 483, 348 )
+
+[node name="respawn_point2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 780, 216 )
 
 [connection signal="body_entered" from="fall_area" to="." method="_on_fall_area_body_entered"]

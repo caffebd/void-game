@@ -25,9 +25,11 @@ func _ready():
 	print(start_position)
 	GlobalSignal.connect("player_fell", self, "_player_fell")
 	GlobalSignal.connect("player_reset", self, "_player_reset")
+	GlobalSignal.connect("respown_point",self, "_respown_point")
 	$HealthTimer.start()
 	
-
+func _respown_point(position):
+	start_position = position
 
 func _player_reset():
 	global_position = start_position
