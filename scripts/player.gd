@@ -63,7 +63,7 @@ func _spown():
 	$CPUParticles2D.emitting = false
 	$playercollision.disabled = false
 	GlobalVariables.player_moving = true
-	
+
 
 
 func _player_fell():
@@ -84,8 +84,7 @@ func _input(event):
 				
 		
 
-	
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	direction.x = 0

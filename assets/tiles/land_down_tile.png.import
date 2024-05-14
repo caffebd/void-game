@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ufo_helper.png-554d763f09159ac2de04d7402d55f4b6.stex"
+path="res://.import/land_down_tile.png-4db24118038603ee69681cdba2db840d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/ufo_helper.png"
-dest_files=[ "res://.import/ufo_helper.png-554d763f09159ac2de04d7402d55f4b6.stex" ]
+source_file="res://assets/tiles/land_down_tile.png"
+dest_files=[ "res://.import/land_down_tile.png-4db24118038603ee69681cdba2db840d.stex" ]
 
 [params]
 

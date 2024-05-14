@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ufo.jpg-715dd4b6e6788d77014c58297676620e.stex"
+path="res://.import/oxyzen_cylinder.png-beb3e77355c0f387e19608ad796f4f5f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/ufo.jpg"
-dest_files=[ "res://.import/ufo.jpg-715dd4b6e6788d77014c58297676620e.stex" ]
+source_file="res://assets/props/oxyzen_cylinder.png"
+dest_files=[ "res://.import/oxyzen_cylinder.png-beb3e77355c0f387e19608ad796f4f5f.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door.png-65303c7ca036763e5ad7217cc8c5a200.stex"
+path="res://.import/oxyzen_cylinder2.png-be6af43e116b47144ffda079555f49da.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/door.png"
-dest_files=[ "res://.import/door.png-65303c7ca036763e5ad7217cc8c5a200.stex" ]
+source_file="res://assets/props/oxyzen_cylinder2.png"
+dest_files=[ "res://.import/oxyzen_cylinder2.png-be6af43e116b47144ffda079555f49da.stex" ]
 
 [params]
 

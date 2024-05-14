@@ -38,12 +38,12 @@ func _start_ui():
 		GlobalVariables.player_oxygen = 100
 		GlobalVariables.ammo = 10
 		GlobalVariables.max_ammo = 20
+		GlobalVariables.player_moving = false
+		GlobalSignal.emit_signal("player_reset")
 		current_ammo.text = str(GlobalVariables.ammo)
 		max_ammo.text = str(GlobalVariables.max_ammo)
 		health_bar.value = GlobalVariables.player_health
 		oxygen_bar.value = GlobalVariables.player_oxygen
-		GlobalVariables.player_moving = false
-		GlobalSignal.emit_signal("player_reset")
 		
 		
 	elif GlobalVariables.player_oxygen <= 0:
@@ -51,15 +51,15 @@ func _start_ui():
 		GlobalVariables.player_health = 100
 		GlobalVariables.ammo = 10
 		GlobalVariables.max_ammo = 20
+		GlobalSignal.emit_signal("player_reset")
+		GlobalVariables.player_moving = false
 		current_ammo.text = str(GlobalVariables.ammo)
 		max_ammo.text = str(GlobalVariables.max_ammo)
 		health_bar.value = GlobalVariables.player_health
 		oxygen_bar.value = GlobalVariables.player_oxygen
-		GlobalSignal.emit_signal("player_reset")
-		GlobalVariables.player_moving = false
 	print(GlobalVariables.player_health)
 	
-	
+
 
 
 func _ammo_left():
