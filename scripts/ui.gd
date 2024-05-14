@@ -7,7 +7,7 @@ onready var max_ammo = $MarginContainer/Row/BottomRow/AmmoSection/MaxAmmo
 onready var oxygen_bar = $MarginContainer/Row/TopRow/OxygenSection2/OxygenBar
 onready var time_label = $MarginContainer/Row/TopRow/TimeSection/TimeLabel
 
-var time_left = 60
+var time_left = 10
 
 var time = 20
 var life
@@ -78,8 +78,8 @@ func _ammo_left():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	life = time * delta/1
-	oxy = time * delta/9
+	life = time * delta/3
+	oxy = time * delta/4
 	
 #	if player_moving == true:
 #		var life = time * delta/1
@@ -117,5 +117,9 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	time_left -= 1
-	time_label.text = "Time : " + str(time_left)
+	if time_left == 0:
+		$MarginContainer/Timer.stop()
+	else:
+		time_left -= 1
+		time_label.text = "Time : " + str(time_left)
+	

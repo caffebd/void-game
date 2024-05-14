@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/props/oxyzen_cylinder2.png" type="Texture" id=1]
+[ext_resource path="res://scripts/cylender.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
 height = 22.0
 
-[node name="cylender" type="KinematicBody2D"]
+[node name="cylender" type="Area2D"]
 collision_layer = 32
 collision_mask = 3
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -17,3 +19,5 @@ texture = ExtResource( 1 )
 modulate = Color( 0.105882, 0.54902, 0.792157, 1 )
 position = Vector2( 0, 1 )
 shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_cylender_body_entered"]

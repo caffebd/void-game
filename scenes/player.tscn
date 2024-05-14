@@ -111,12 +111,12 @@ shape = SubResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="attack_node"]
 modulate = Color( 0.027451, 1, 0.909804, 1 )
-position = Vector2( 3, 6 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 3.5, 6 )
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 
 [node name="gunpos" type="Position2D" parent="attack_node"]
-position = Vector2( 6, 5 )
+position = Vector2( 8.5, 5.5 )
 
 [node name="HealthTimer" type="Timer" parent="."]
 

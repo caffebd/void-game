@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/ui.gd" type="Script" id=2]
-[ext_resource path="res://assets/props/gunicon.png" type="Texture" id=3]
+[ext_resource path="res://assets/props/gun.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0705882, 0.623529, 0.172549, 1 )
@@ -157,31 +157,32 @@ size_flags_horizontal = 3
 alignment = 2
 
 [node name="CurrentAmmo" type="Label" parent="MarginContainer/Row/BottomRow/AmmoSection"]
-margin_left = 874.0
+margin_left = 882.0
 margin_top = 14.0
-margin_right = 909.0
+margin_right = 910.0
 margin_bottom = 49.0
 custom_fonts/font = SubResource( 3 )
-text = "30"
+text = "10"
 
 [node name="AmmoSeparator" type="Label" parent="MarginContainer/Row/BottomRow/AmmoSection"]
-margin_left = 913.0
+margin_left = 914.0
 margin_top = 14.0
-margin_right = 945.0
+margin_right = 946.0
 margin_bottom = 49.0
 custom_fonts/font = SubResource( 3 )
 text = " / "
 
 [node name="MaxAmmo" type="Label" parent="MarginContainer/Row/BottomRow/AmmoSection"]
-margin_left = 949.0
+margin_left = 950.0
 margin_top = 14.0
 margin_right = 984.0
 margin_bottom = 49.0
 custom_fonts/font = SubResource( 5 )
-text = "30"
+text = "20"
 
 [node name="Sprite" type="Sprite" parent="MarginContainer"]
-position = Vector2( 824, 557 )
+position = Vector2( 817, 551 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="MarginContainer"]

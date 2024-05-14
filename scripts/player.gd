@@ -4,7 +4,7 @@ export var speed = 250
 
 export var jump_speed = -350
 
-var gravity = 1200
+var gravity = 1000
 
 var direction := Vector2.ZERO
 
