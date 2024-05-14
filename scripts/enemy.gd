@@ -16,7 +16,7 @@ func _ready():
 	$WalkTimer.wait_time = walk_time
 	$WalkTimer.start()
 	$Food/FoodCollision.disabled = true
-	$KillArea/KillCollision.disabled = false
+#	$KillArea/KillCollision.disabled = false
 	$DieArea/DieCollision.disabled = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,14 +32,12 @@ func _on_WalkTimer_timeout():
 	walk_speed *= -1
 
 
-func _on_KillArea_body_entered(body):
+
+func _on_DieArea_body_entered(body):
 	if body.is_in_group("player"):
 		GlobalSignal.emit_signal("player_reset")
 		
-	
-
-func _on_DieArea_body_entered(body):
-	if body.is_in_group("ammo"):
+	elif body.is_in_group("ammo"):
 		$EnemyCPUParticles.emitting = true
 		call_deferred("_disable_collision")
 		var tween = create_tween()
@@ -51,7 +49,7 @@ func _on_DieArea_body_entered(body):
 		
 	
 func _disable_collision():
-	$KillArea/KillCollision.disabled = true
+#	$KillArea/KillCollision.disabled = true
 	$DieArea/DieCollision.disabled = true
 	$Food/FoodCollision.disabled = false
 

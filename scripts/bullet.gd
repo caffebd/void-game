@@ -34,5 +34,6 @@ func _process(delta):
 #			hit_object.was_hit()
 #		print(hit_object.name)
 			queue_free()
+		
 
 

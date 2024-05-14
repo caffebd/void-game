@@ -5,6 +5,9 @@ onready var health_bar = $MarginContainer/Row/TopRow/HealthSection/HealthBar
 onready var current_ammo = $MarginContainer/Row/BottomRow/AmmoSection/CurrentAmmo
 onready var max_ammo = $MarginContainer/Row/BottomRow/AmmoSection/MaxAmmo
 onready var oxygen_bar = $MarginContainer/Row/TopRow/OxygenSection2/OxygenBar
+onready var time_label = $MarginContainer/Row/TopRow/TimeSection/TimeLabel
+
+var time_left = 60
 
 var time = 20
 var life
@@ -12,7 +15,7 @@ var oxy
 
 
 func _ready():
-	
+	$MarginContainer/Timer.start()
 	GlobalSignal.connect("ammo_left", self, "_ammo_left")
 	GlobalSignal.connect("start_ui", self, "_start_ui")
 	health_bar.value = GlobalVariables.player_health
@@ -111,3 +114,8 @@ func _process(delta):
 
 
 
+
+
+func _on_Timer_timeout():
+	time_left -= 1
+	time_label.text = "Time : " + str(time_left)

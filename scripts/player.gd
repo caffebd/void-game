@@ -22,7 +22,7 @@ var at_point = false
 func _ready():
 	GlobalVariables.player_moving = true
 	start_position = global_position
-	start_position.y -= 100
+	
 	print(start_position)
 	GlobalSignal.connect("player_fell", self, "_player_fell")
 	GlobalSignal.connect("player_reset", self, "_player_reset")

@@ -94,6 +94,8 @@ height = 8.0
 [node name="player" type="KinematicBody2D" groups=["player"]]
 modulate = Color( 0, 0.976563, 1, 1 )
 scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 33
 script = ExtResource( 2 )
 
 [node name="playeranim" type="AnimatedSprite" parent="."]
