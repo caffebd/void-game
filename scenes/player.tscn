@@ -74,3 +74,7 @@ scale_amount = 2.0
 color = Color( 0.0352941, 0.909804, 0.211765, 1 )
 hue_variation = 0.05
 hue_variation_random = 0.29
+
+[node name="RayCastFloor" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 18 )

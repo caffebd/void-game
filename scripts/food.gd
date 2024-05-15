@@ -5,6 +5,8 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
+export(NodePath) var linked_enemy_path
+onready var linked_enemy = get_node(linked_enemy_path)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

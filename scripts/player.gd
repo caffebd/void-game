@@ -127,9 +127,11 @@ func _process(delta):
 #		GlobalVariables.max_ammo = 20
 #		GlobalVariables.ammo = 10
 #
+	var is_grounded = $RayCastFloor.is_colliding() 
+	
 	
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
+		if is_grounded:
 			direction.y = jump_speed
 			GlobalSignal.emit_signal("start_ui")
 	
