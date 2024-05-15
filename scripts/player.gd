@@ -4,7 +4,7 @@ export var speed = 250
 
 export var jump_speed = -350
 
-var gravity = 1000
+var gravity = 800
 
 var direction := Vector2.ZERO
 
@@ -108,6 +108,7 @@ func _process(delta):
 		
 	else:
 		$playeranim.play("idle")
+		$attack_node/Sprite.visible = false
 	
 	
 	if GlobalVariables.ammo == 0 && !GlobalVariables.max_ammo == 0:

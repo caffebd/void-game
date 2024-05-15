@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sarah Walking New3.png-360c4923d6879f61197862278185fd26.stex"
+path="res://.import/spn9.png-1287c21b62a6dca380a899e9c603f751.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Sarah Walking New3.png"
-dest_files=[ "res://.import/Sarah Walking New3.png-360c4923d6879f61197862278185fd26.stex" ]
+source_file="res://assets/props/spn/spn9.png"
+dest_files=[ "res://.import/spn9.png-1287c21b62a6dca380a899e9c603f751.stex" ]
 
 [params]
 

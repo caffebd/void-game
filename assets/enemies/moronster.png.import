@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sarah Walking New2.png-99a671fed99b75421c85cefe4c927203.stex"
+path="res://.import/moronster.png-ab166644194524f0fb54ca1b07e6ea5c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Sarah Walking New2.png"
-dest_files=[ "res://.import/Sarah Walking New2.png-99a671fed99b75421c85cefe4c927203.stex" ]
+source_file="res://assets/enemies/moronster.png"
+dest_files=[ "res://.import/moronster.png-ab166644194524f0fb54ca1b07e6ea5c.stex" ]
 
 [params]
 

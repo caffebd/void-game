@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/tiles/tiles (1).png" type="Texture" id=9]
 [ext_resource path="res://scenes/moving_platform.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/cylender.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/respawn_point.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 937, 10 )
@@ -191,7 +192,7 @@ position = Vector2( 2477, 342 )
 walk_time = 3.0
 
 [node name="enemy2" parent="enemies" instance=ExtResource( 5 )]
-position = Vector2( 1971, 406 )
+position = Vector2( 1947, 382 )
 walk_speed = -100
 walk_time = 3.0
 
@@ -237,6 +238,9 @@ rotation = 0.213412
 [node name="cylender2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1561, -380 )
 
+[node name="respawn_point" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1606, 393 )
+
 [node name="TileMap" type="TileMap" parent="." groups=["walls"]]
 tile_set = SubResource( 7 )
 cell_size = Vector2( 32, 32 )
@@ -254,6 +258,6 @@ TargetNodePath = NodePath("../player")
 [node name="ui" parent="Camera2D" instance=ExtResource( 6 )]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 3671, -251 )
+position = Vector2( 1398, 251 )
 
 [connection signal="body_entered" from="fall_area" to="." method="_on_fall_area_body_entered"]
