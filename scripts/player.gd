@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 export var speed = 250
 
-export var jump_speed = -350
+export var jump_speed = -500
 
-var gravity = 800
+var gravity = 1200
 
 var direction := Vector2.ZERO
 

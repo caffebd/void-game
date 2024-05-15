@@ -10,4 +10,4 @@ signal ammo_left()
 signal start_ui()
 
 signal respown_point(position)
-
+signal food_poss(position)

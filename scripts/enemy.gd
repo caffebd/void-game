@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 
 const GRAVITY = 900
-export var food_hp = 10
 export var walk_speed = 100
 
 var direction = Vector2.ZERO
@@ -11,11 +10,12 @@ export var walk_time:float = 1
 
 var movement = true
 
+var food_scene = preload("res://scenes/food.tscn")
+
 func _ready():
 	$EnemyFoodSprite.play("enemy")
 	$WalkTimer.wait_time = walk_time
 	$WalkTimer.start()
-	$Food/FoodCollision.disabled = true
 #	$KillArea/KillCollision.disabled = false
 	$DieArea/DieCollision.disabled = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,26 +38,25 @@ func _on_DieArea_body_entered(body):
 		GlobalSignal.emit_signal("player_reset")
 		
 	elif body.is_in_group("ammo"):
+		movement = false
 		$EnemyCPUParticles.emitting = true
 		call_deferred("_disable_collision")
 		var tween = create_tween()
 		tween.tween_property($EnemyCPUParticles, "modulate:a", 0.0, 1.0)
-		movement = false
-		$EnemyFoodSprite.play("food")
 		yield(tween, "finished")
-		call_deferred("_disable_collision")
+		
+		var food = food_scene.instance()
+		get_parent().add_child(food)
+		food.food_poss($EnemyFoodSprite.global_position)
+		visible = false
+#		GlobalSignal.emit_signal("food_poss", global_position)
+#		$EnemyFoodSprite.play("food")
+		_disable_collision()
 		
 	
 func _disable_collision():
 #	$KillArea/KillCollision.disabled = true
 	$DieArea/DieCollision.disabled = true
-	$Food/FoodCollision.disabled = false
 
 
-func _on_Food_body_entered(body):
-	if body.is_in_group("player"):
-		GlobalVariables.player_health += food_hp
-#		GlobalSignal.emit_signal("player_reset")
-		print("collected")
-		queue_free()
-	
+

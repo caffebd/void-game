@@ -36,7 +36,7 @@ script = ExtResource( 2 )
 scale = Vector2( 0.555, 0.555 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 4
+frame = 3
 playing = true
 
 [node name="playercollision" type="CollisionShape2D" parent="."]
@@ -76,5 +76,6 @@ hue_variation = 0.05
 hue_variation_random = 0.29
 
 [node name="RayCastFloor" type="RayCast2D" parent="."]
+position = Vector2( 0, 8.5 )
 enabled = true
-cast_to = Vector2( 0, 18 )
+cast_to = Vector2( 0, 11 )
