@@ -88,7 +88,7 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	direction.x = 0
-	direction.y += gravity/2 * delta
+	direction.y += gravity * delta
 	
 	if Input.is_action_pressed("left"):
 		if GlobalVariables.player_moving == true:
