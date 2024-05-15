@@ -40,11 +40,10 @@ func _on_DieArea_body_entered(body):
 	elif body.is_in_group("ammo"):
 		movement = false
 		$EnemyCPUParticles.emitting = true
-		call_deferred("_disable_collision")
+#		call_deferred("_disable_collision")
 		var tween = create_tween()
 		tween.tween_property($EnemyCPUParticles, "modulate:a", 0.0, 1.0)
 		yield(tween, "finished")
-		
 		var food = food_scene.instance()
 		get_parent().add_child(food)
 		food.food_poss($EnemyFoodSprite.global_position)
@@ -56,7 +55,10 @@ func _on_DieArea_body_entered(body):
 	
 func _disable_collision():
 #	$KillArea/KillCollision.disabled = true
-	$DieArea/DieCollision.disabled = true
+#	var tween2 = create_tween()
+#	tween2.tween_property(self, $DieArea/DieCollision , "disabled" , true)
+#	yield(tween2, "finished")
+	queue_free()
 
 
 
