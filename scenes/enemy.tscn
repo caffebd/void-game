@@ -28,8 +28,8 @@ radius = 9.0
 height = 2.0
 
 [node name="enemyfood" type="KinematicBody2D" groups=["enemy"]]
-collision_layer = 8
-collision_mask = 7
+collision_layer = 24
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="EnemyFoodSprite" type="AnimatedSprite" parent="."]

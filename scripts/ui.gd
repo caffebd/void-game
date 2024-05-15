@@ -81,6 +81,10 @@ func _process(delta):
 	life = time * delta/3
 	oxy = time * delta/4
 	
+	health_bar.value = GlobalVariables.player_health
+	oxygen_bar.value = GlobalVariables.player_oxygen
+	current_ammo.text = str(GlobalVariables.ammo)
+	max_ammo.text = str(GlobalVariables.max_ammo)
 #	if player_moving == true:
 #		var life = time * delta/1
 #		GlobalVariables.player_health -= life
