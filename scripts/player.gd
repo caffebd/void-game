@@ -62,6 +62,8 @@ func _spown():
 	var tween2 = create_tween()
 	tween2.tween_property(self, "global_position", start_position, 1.0)
 	yield (tween2, "finished")
+	GlobalVariables.player_health = 100
+	GlobalVariables.player_oxygen = 100
 	GlobalSignal.emit_signal("start_ui")
 	visible = true
 	shooting = true

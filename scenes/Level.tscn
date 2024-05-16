@@ -244,6 +244,9 @@ position = Vector2( 1561, -380 )
 [node name="respawn_point" parent="Respawns" instance=ExtResource( 12 )]
 position = Vector2( 3156, -126 )
 
+[node name="respawn_point2" parent="Respawns" instance=ExtResource( 12 )]
+position = Vector2( 3255, -478 )
+
 [node name="TileMap" type="TileMap" parent="." groups=["walls"]]
 tile_set = SubResource( 7 )
 cell_size = Vector2( 32, 32 )
@@ -261,6 +264,6 @@ TargetNodePath = NodePath("../player")
 [node name="ui" parent="Camera2D" instance=ExtResource( 6 )]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2924, 151 )
+position = Vector2( 41, 355 )
 
 [connection signal="body_entered" from="fall_area" to="." method="_on_fall_area_body_entered"]

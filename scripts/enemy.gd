@@ -47,7 +47,7 @@ func _on_DieArea_body_entered(body):
 		var food = food_scene.instance()
 		get_parent().add_child(food)
 		food.food_poss($EnemyFoodSprite.global_position)
-		visible = false
+		
 #		GlobalSignal.emit_signal("food_poss", global_position)
 #		$EnemyFoodSprite.play("food")
 		_disable_collision()
