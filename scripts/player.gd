@@ -133,7 +133,7 @@ func _process(delta):
 #		GlobalVariables.max_ammo = 20
 #		GlobalVariables.ammo = 10
 #
-	var is_grounded = $RayCastFloor.is_colliding() 
+	var is_grounded = $RayCastFloor.is_colliding() or  $RayCastFloor2.is_colliding()
 	
 	
 	if Input.is_action_just_pressed("jump"):

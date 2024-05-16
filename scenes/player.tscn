@@ -78,6 +78,11 @@ hue_variation = 0.05
 hue_variation_random = 0.29
 
 [node name="RayCastFloor" type="RayCast2D" parent="."]
-position = Vector2( 0, 8.5 )
+position = Vector2( -5, 4.5 )
+enabled = true
+cast_to = Vector2( 0, 15.5 )
+
+[node name="RayCastFloor2" type="RayCast2D" parent="."]
+position = Vector2( 5, 4.5 )
 enabled = true
 cast_to = Vector2( 0, 15.5 )
