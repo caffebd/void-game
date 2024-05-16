@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/respawn.mp3-b770c12346726ad540163b440e775eab.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/respawn.mp3"
+dest_files=[ "res://.import/respawn.mp3-b770c12346726ad540163b440e775eab.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

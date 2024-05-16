@@ -40,6 +40,7 @@ func _on_DieArea_body_entered(body):
 	elif body.is_in_group("ammo"):
 		movement = false
 		$EnemyCPUParticles.emitting = true
+		$die.play()
 #		call_deferred("_disable_collision")
 		var tween = create_tween()
 		tween.tween_property($EnemyCPUParticles, "modulate:a", 0.0, 1.0)

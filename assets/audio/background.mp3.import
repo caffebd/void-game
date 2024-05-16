@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/background.mp3-17dab046b85894bf03f9402983003bd8.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/background.mp3"
+dest_files=[ "res://.import/background.mp3-17dab046b85894bf03f9402983003bd8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 export var food_hp = 10
 
+onready var collectingSound = $pickup
+
 var velocity = Vector2.ZERO
 # Declare member variables here. Examples:
 # var a = 2
@@ -26,6 +28,9 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
 		GlobalVariables.player_health += food_hp
+		collectingSound.play()
+		visible = false
+		yield(collectingSound, "finished")
 #		GlobalSignal.emit_signal("player_reset")
 		print("collected")
 		queue_free()

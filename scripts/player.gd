@@ -26,12 +26,23 @@ var at_point = false
 func _ready():
 	GlobalVariables.player_moving = true
 	start_position = global_position
-	
+	$audio/BackgroundMusic.play()
 	print(start_position)
 	GlobalSignal.connect("player_fell", self, "_player_fell")
 	GlobalSignal.connect("player_reset", self, "_player_reset")
 	GlobalSignal.connect("respown_point",self, "_respown_point")
+	GlobalSignal.connect("player_won", self, "_player_won")
 	
+
+func _player_won():
+#	direction = Vector2.ZERO
+	gravity = 0
+#	global_position.y -= 100
+	direction.y = -100
+	
+	
+
+
 func _respown_point(position):
 #	at_point = true
 	start_position = position
@@ -48,6 +59,7 @@ func _player_reset():
 	shooting = false
 	#call_deferred("_collision_off")
 	$CPUParticles2D.emitting = true
+	$audio/respawn.play()
 	
 	var tween = create_tween()
 	tween.tween_property($CPUParticles2D, "modulate:a", 0.0, 1.0)
@@ -69,6 +81,7 @@ func _spown():
 	shooting = true
 	$CPUParticles2D.emitting = false
 	$playercollision.disabled = false
+	$audio/respawn.stop()
 	GlobalVariables.player_moving = true
 	$CPUParticles2D.modulate.a = 255
 
@@ -85,6 +98,7 @@ func _input(event):
 			if GlobalVariables.ammo >= 0:
 				GlobalVariables.ammo -= 1
 				GlobalSignal.emit_signal("ammo_left")
+				$audio/shooting.play()
 	#			GlobalSignal.emit_signal("max_ammo_left")
 				var bullet = bullet_scene.instance()
 				get_parent().add_child(bullet)
@@ -139,9 +153,11 @@ func _process(delta):
 	
 	
 	if Input.is_action_just_pressed("jump"):
-		if is_grounded || !coyote_timer.is_stopped():
-			direction.y = jump_speed
-			GlobalSignal.emit_signal("start_ui")
+		if GlobalVariables.player_moving == true:
+			if is_grounded || !coyote_timer.is_stopped():
+				$audio/jumping.play()
+				direction.y = jump_speed
+				GlobalSignal.emit_signal("start_ui")
 	
 	if is_grounded && !is_on_floor() :
 		coyote_timer.start()

@@ -4,6 +4,7 @@ extends Node
 
 signal player_fell()
 signal player_reset()
+signal player_won()
 
 signal current_health()
 signal ammo_left()

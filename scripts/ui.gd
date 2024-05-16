@@ -78,8 +78,8 @@ func _ammo_left():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	life = time * delta/3
-	oxy = time * delta/4
+	life = time * delta/4
+	oxy = time * delta/5
 	
 	health_bar.value = GlobalVariables.player_health
 	oxygen_bar.value = GlobalVariables.player_oxygen
