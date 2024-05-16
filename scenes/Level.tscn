@@ -214,8 +214,8 @@ position = Vector2( 1961, 113 )
 move_to = Vector2( 0, 300 )
 
 [node name="moving_platform4" parent="platforms" instance=ExtResource( 10 )]
-position = Vector2( 3038, 45 )
-move_to = Vector2( 0, 250 )
+position = Vector2( 3037, 69 )
+move_to = Vector2( 0, 200 )
 move_time = 4.0
 
 [node name="moving_platform6" parent="platforms" instance=ExtResource( 10 )]
@@ -261,6 +261,6 @@ TargetNodePath = NodePath("../player")
 [node name="ui" parent="Camera2D" instance=ExtResource( 6 )]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 128, 309 )
+position = Vector2( 2924, 151 )
 
 [connection signal="body_entered" from="fall_area" to="." method="_on_fall_area_body_entered"]

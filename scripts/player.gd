@@ -14,6 +14,7 @@ var bullet_scene = preload("res://scenes/bullet.tscn")
 
 onready var coyote_timer = $CoyoteTimer
 
+var shooting = true
 
 var at_point = false
 # Declare member variables here. Examples:
@@ -44,15 +45,15 @@ func _player_reset():
 #	if at_point == true:
 	direction = Vector2.ZERO
 	#$PortalSound.play()
-	
+	shooting = false
 	#call_deferred("_collision_off")
 	$CPUParticles2D.emitting = true
-	visible = false
+	
 	var tween = create_tween()
 	tween.tween_property($CPUParticles2D, "modulate:a", 0.0, 1.0)
 	yield(tween, "finished")
+	visible = false
 	GlobalVariables.player_moving = false
-	
 	call_deferred("_spown")
 #		global_position = start_position
 	
@@ -63,6 +64,7 @@ func _spown():
 	yield (tween2, "finished")
 	GlobalSignal.emit_signal("start_ui")
 	visible = true
+	shooting = true
 	$CPUParticles2D.emitting = false
 	$playercollision.disabled = false
 	GlobalVariables.player_moving = true
@@ -76,7 +78,7 @@ func _player_fell():
 
 func _input(event):
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") && shooting == true :
 		if !GlobalVariables.ammo == 0:
 			if GlobalVariables.ammo >= 0:
 				GlobalVariables.ammo -= 1
