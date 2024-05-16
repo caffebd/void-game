@@ -12,6 +12,9 @@ var start_position = Vector2.ZERO
 
 var bullet_scene = preload("res://scenes/bullet.tscn")
 
+onready var coyote_timer = $CoyoteTimer
+
+
 var at_point = false
 # Declare member variables here. Examples:
 # var a = 2
@@ -27,7 +30,6 @@ func _ready():
 	GlobalSignal.connect("player_fell", self, "_player_fell")
 	GlobalSignal.connect("player_reset", self, "_player_reset")
 	GlobalSignal.connect("respown_point",self, "_respown_point")
-	$HealthTimer.start()
 	
 func _respown_point(position):
 #	at_point = true
@@ -45,11 +47,12 @@ func _player_reset():
 	
 	#call_deferred("_collision_off")
 	$CPUParticles2D.emitting = true
+	visible = false
 	var tween = create_tween()
 	tween.tween_property($CPUParticles2D, "modulate:a", 0.0, 1.0)
 	yield(tween, "finished")
 	GlobalVariables.player_moving = false
-	visible = false
+	
 	call_deferred("_spown")
 #		global_position = start_position
 	
@@ -63,6 +66,7 @@ func _spown():
 	$CPUParticles2D.emitting = false
 	$playercollision.disabled = false
 	GlobalVariables.player_moving = true
+	$CPUParticles2D.modulate.a = 255
 
 
 
@@ -108,7 +112,7 @@ func _process(delta):
 		
 	else:
 		$playeranim.play("idle")
-		$attack_node/Sprite.visible = false
+#		$attack_node/Sprite.visible = false
 	
 	
 	if GlobalVariables.ammo == 0 && !GlobalVariables.max_ammo == 0:
@@ -131,9 +135,12 @@ func _process(delta):
 	
 	
 	if Input.is_action_just_pressed("jump"):
-		if is_grounded:
+		if is_grounded || !coyote_timer.is_stopped():
 			direction.y = jump_speed
 			GlobalSignal.emit_signal("start_ui")
+	
+	if is_grounded && !is_on_floor() :
+		coyote_timer.start()
 	
 	direction = move_and_slide(direction,  Vector2.UP)
 	
