@@ -110,7 +110,7 @@ func _input(event):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	direction.x = 0
 	direction.y += gravity * delta
 	
