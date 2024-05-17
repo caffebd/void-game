@@ -36,6 +36,7 @@ func _on_WalkTimer_timeout():
 func _on_DieArea_body_entered(body):
 	if body.is_in_group("player"):
 		GlobalSignal.emit_signal("player_reset")
+		GlobalVariables.player_moving = false
 		
 	elif body.is_in_group("ammo"):
 		movement = false

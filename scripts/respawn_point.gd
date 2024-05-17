@@ -13,6 +13,7 @@ func _ready():
 func _on_respawn_point_body_entered(body):
 	if body.is_in_group("player"):
 		$AnimatedSprite.play("play_spawn")
+		$res.play()
 		GlobalSignal.emit_signal("respown_point",global_position)
 		
 

@@ -38,7 +38,7 @@ func _player_won():
 #	direction = Vector2.ZERO
 	gravity = 0
 #	global_position.y -= 100
-	direction.y = -100
+	direction.y = -150
 	
 	
 

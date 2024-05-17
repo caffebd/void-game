@@ -19,4 +19,5 @@ func _ready():
 func _on_spike_body_entered(body):
 	if body.is_in_group("player"):
 		GlobalSignal.emit_signal("player_reset")
+		GlobalVariables.player_moving = false
 		

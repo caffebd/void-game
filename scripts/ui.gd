@@ -7,7 +7,7 @@ onready var max_ammo = $MarginContainer/Row/BottomRow/AmmoSection/MaxAmmo
 onready var oxygen_bar = $MarginContainer/Row/TopRow/OxygenSection2/OxygenBar
 onready var time_label = $MarginContainer/Row/TopRow/TimeSection/TimeLabel
 
-var time_left = 10
+var used_time = 10
 
 var time = 20
 var life
@@ -121,9 +121,6 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	if time_left == 0:
-		$MarginContainer/Timer.stop()
-	else:
-		time_left -= 1
-		time_label.text = "Time : " + str(time_left)
+	used_time += 1
+	time_label.text = "Time : " + str(used_time)
 	
