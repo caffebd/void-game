@@ -27,7 +27,6 @@ func _ready():
 	GlobalVariables.player_moving = true
 	start_position = global_position
 	$audio/BackgroundMusic.play()
-	print(start_position)
 	GlobalSignal.connect("player_fell", self, "_player_fell")
 	GlobalSignal.connect("player_reset", self, "_player_reset")
 	GlobalSignal.connect("respown_point",self, "_respown_point")
@@ -39,9 +38,13 @@ func _player_won():
 	gravity = 0
 #	global_position.y -= 100
 	direction.y = -150
+	$WinTimer.start()
+	
+#	call_deferred("_win_scene")
 	
 	
-
+func _win_scene():
+	get_tree().change_scene("res://scenes/win_scene.tscn")
 
 func _respown_point(position):
 #	at_point = true
@@ -89,7 +92,6 @@ func _spown():
 
 func _player_fell():
 	global_position = start_position
-	print(global_position)
 
 func _input(event):
 	
@@ -164,3 +166,7 @@ func _process(delta):
 	
 	direction = move_and_slide(direction,  Vector2.UP)
 	
+
+
+func _on_WinTimer_timeout():
+	call_deferred("_win_scene")

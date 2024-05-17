@@ -105,12 +105,12 @@ margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/Row/TopRow/TimeSection"]
-margin_left = 104.0
+margin_left = 111.0
 margin_top = 16.0
-margin_right = 221.0
+margin_right = 213.0
 margin_bottom = 46.0
 custom_fonts/font = SubResource( 8 )
-text = "Time : 60"
+text = "Time : 0"
 
 [node name="OxygenSection2" type="CenterContainer" parent="MarginContainer/Row/TopRow"]
 margin_left = 658.0

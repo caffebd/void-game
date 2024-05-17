@@ -7,7 +7,7 @@ onready var max_ammo = $MarginContainer/Row/BottomRow/AmmoSection/MaxAmmo
 onready var oxygen_bar = $MarginContainer/Row/TopRow/OxygenSection2/OxygenBar
 onready var time_label = $MarginContainer/Row/TopRow/TimeSection/TimeLabel
 
-var used_time = 10
+var used_time = 0
 
 var time = 20
 var life
@@ -34,7 +34,6 @@ func _start_ui():
 		GlobalVariables.player_oxygen -= oxy
 		oxygen_bar.value = GlobalVariables.player_oxygen
 	
-	print(GlobalVariables.player_oxygen)
 
 	if GlobalVariables.player_health <= 0:
 		GlobalVariables.player_health = 100
@@ -60,7 +59,7 @@ func _start_ui():
 		max_ammo.text = str(GlobalVariables.max_ammo)
 		health_bar.value = GlobalVariables.player_health
 		oxygen_bar.value = GlobalVariables.player_oxygen
-	print(GlobalVariables.player_health)
+	
 	
 
 
@@ -114,8 +113,7 @@ func _process(delta):
 #		max_ammo.text = str(GlobalVariables.max_ammo)
 #		GlobalSignal.emit_signal("player_reset")
 #	print(GlobalVariables.player_health)
-	pass
-
+	
 
 
 

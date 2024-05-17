@@ -43,7 +43,7 @@ script = ExtResource( 2 )
 [node name="playeranim" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.555, 0.555 )
 frames = SubResource( 7 )
-animation = "walk"
+animation = "idle"
 frame = 4
 playing = true
 
@@ -95,11 +95,16 @@ cast_to = Vector2( 0, 15.5 )
 [node name="jumping" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource( 3 )
 
-[node name="respawn" type="AudioStreamPlayer2D" parent="audio"]
-stream = ExtResource( 13 )
-
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource( 14 )
 
 [node name="shooting" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource( 15 )
+
+[node name="respawn" type="AudioStreamPlayer2D" parent="audio"]
+stream = ExtResource( 13 )
+
+[node name="WinTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="WinTimer" to="." method="_on_WinTimer_timeout"]

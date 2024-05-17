@@ -198,11 +198,11 @@ position = Vector2( 513, 294 )
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="enemy" parent="enemies" instance=ExtResource( 5 )]
-position = Vector2( 2469, 323 )
+position = Vector2( 2421, 332 )
 walk_time = 3.0
 
 [node name="enemy2" parent="enemies" instance=ExtResource( 5 )]
-position = Vector2( 4723, 482 )
+position = Vector2( 4736, 494 )
 walk_speed = -100
 walk_time = 3.0
 
@@ -333,7 +333,7 @@ TargetNodePath = NodePath("../player")
 [node name="ui" parent="Camera2D" instance=ExtResource( 6 )]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 82, 356 )
+position = Vector2( 97, 357 )
 
 [node name="FinishLine" type="Node2D" parent="."]
 
