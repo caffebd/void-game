@@ -9,6 +9,7 @@ var scaling = Vector2.ZERO
 
 
 func _ready():
+	$sound.play()
 	$After_anim.visible = false
 	start_pos = global_position
 	_start_moving()
@@ -33,7 +34,7 @@ func _start_moving():
 	var tween2 = create_tween()
 	tween2.tween_property(mship, "scale", scaling, 3.0)
 	yield (tween2, "finished")
-	$After_anim/Time.text = "Time : " + str(GlobalVariables.used_time)
+	$After_anim/Time.text = "Beat your own time : " + str(GlobalVariables.used_time)
 	$After_anim.visible = true
 	
 

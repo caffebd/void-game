@@ -55,6 +55,7 @@ func _respown_point(position):
 
 func _player_reset():
 	GlobalVariables.player_moving = false
+	
 #	if at_point == true:
 	direction = Vector2.ZERO
 	#$PortalSound.play()

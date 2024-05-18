@@ -74,6 +74,12 @@ func _process(delta):
 	current_ammo.text = str(GlobalVariables.ammo)
 	max_ammo.text = str(GlobalVariables.max_ammo)
 	
+	if GlobalVariables.player_oxygen >= 100:
+		GlobalVariables.player_oxygen = 100
+		
+	if GlobalVariables.player_health >= 100:
+		GlobalVariables.player_health = 100
+	
 	if GlobalVariables.player_oxygen <= 0:
 		GlobalVariables.player_moving = false
 		GlobalVariables.player_oxygen = 100

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://assets/audio/backsound.mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/fonts/Comfortaa/static/Comfortaa-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/win_scene.gd" type="Script" id=3]
 [ext_resource path="res://assets/props/win_scene.png" type="Texture" id=4]
 [ext_resource path="res://scenes/mother_ship.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/props/gamename.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 59
@@ -56,9 +58,28 @@ text = "PlayAgain"
 [node name="Time" type="Label" parent="After_anim"]
 modulate = Color( 0.0901961, 0.427451, 0.482353, 1 )
 margin_left = 102.0
-margin_top = 393.0
+margin_top = 334.0
 margin_right = 235.0
-margin_bottom = 439.0
+margin_bottom = 380.0
+rect_pivot_offset = Vector2( -426, -14 )
 custom_fonts/font = SubResource( 2 )
+
+[node name="Time2" type="Label" parent="After_anim"]
+visible = false
+modulate = Color( 0.0901961, 0.427451, 0.482353, 1 )
+margin_left = 102.0
+margin_top = 397.0
+margin_right = 235.0
+margin_bottom = 443.0
+rect_pivot_offset = Vector2( -426, -14 )
+custom_fonts/font = SubResource( 2 )
+
+[node name="Gamename" type="Sprite" parent="After_anim"]
+position = Vector2( 240, 208 )
+scale = Vector2( 1.34031, 1.34031 )
+texture = ExtResource( 6 )
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
 
 [connection signal="pressed" from="After_anim/Button" to="." method="_on_Button_pressed"]
