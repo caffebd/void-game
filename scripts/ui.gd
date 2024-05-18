@@ -30,17 +30,14 @@ func _start_ui():
 		GlobalVariables.player_health -= life
 		health_bar.value = GlobalVariables.player_health
 		
-		
-		GlobalVariables.player_oxygen -= oxy
-		oxygen_bar.value = GlobalVariables.player_oxygen
-	
+
 
 	if GlobalVariables.player_health <= 0:
+		GlobalVariables.player_moving = false
 		GlobalVariables.player_health = 100
 		GlobalVariables.player_oxygen = 100
 		GlobalVariables.ammo = 10
 		GlobalVariables.max_ammo = 20
-		GlobalVariables.player_moving = false
 		GlobalSignal.emit_signal("player_reset")
 		current_ammo.text = str(GlobalVariables.ammo)
 		max_ammo.text = str(GlobalVariables.max_ammo)
@@ -48,17 +45,7 @@ func _start_ui():
 		oxygen_bar.value = GlobalVariables.player_oxygen
 		
 		
-	elif GlobalVariables.player_oxygen <= 0:
-		GlobalVariables.player_oxygen = 100
-		GlobalVariables.player_health = 100
-		GlobalVariables.ammo = 10
-		GlobalVariables.max_ammo = 20
-		GlobalSignal.emit_signal("player_reset")
-		GlobalVariables.player_moving = false
-		current_ammo.text = str(GlobalVariables.ammo)
-		max_ammo.text = str(GlobalVariables.max_ammo)
-		health_bar.value = GlobalVariables.player_health
-		oxygen_bar.value = GlobalVariables.player_oxygen
+	
 	
 	
 
@@ -78,12 +65,26 @@ func _ammo_left():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	life = time * delta/4
-	oxy = time * delta/5
+	oxy = time * delta/6
+	
+	GlobalVariables.player_oxygen -= oxy
 	
 	health_bar.value = GlobalVariables.player_health
 	oxygen_bar.value = GlobalVariables.player_oxygen
 	current_ammo.text = str(GlobalVariables.ammo)
 	max_ammo.text = str(GlobalVariables.max_ammo)
+	
+	if GlobalVariables.player_oxygen <= 0:
+		GlobalVariables.player_moving = false
+		GlobalVariables.player_oxygen = 100
+		GlobalVariables.player_health = 100
+		GlobalVariables.ammo = 10
+		GlobalVariables.max_ammo = 20
+		GlobalSignal.emit_signal("player_reset")
+		current_ammo.text = str(GlobalVariables.ammo)
+		max_ammo.text = str(GlobalVariables.max_ammo)
+		health_bar.value = GlobalVariables.player_health
+		oxygen_bar.value = GlobalVariables.player_oxygen
 #	if player_moving == true:
 #		var life = time * delta/1
 #		GlobalVariables.player_health -= life
@@ -119,6 +120,6 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	used_time += 1
-	time_label.text = "Time : " + str(used_time)
+	GlobalVariables.used_time += 1
+	time_label.text = "Time : " + str(GlobalVariables.used_time)
 	

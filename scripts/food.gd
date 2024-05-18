@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var food_hp = 10
+export var food_hp = 30
 
 onready var collectingSound = $pickup
 

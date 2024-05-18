@@ -14,10 +14,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-#	$CPUParticles2D.scale.x += 1
-#
-#	if $CPUParticles2D.scale.x >= 3:
-#		$CPUParticles2D.scale.x -= 1
-
-
-		

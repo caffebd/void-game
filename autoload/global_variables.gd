@@ -8,3 +8,7 @@ var ammo = 10
 var max_ammo = 20
 
 var player_moving = false
+
+
+var used_time = 0
+

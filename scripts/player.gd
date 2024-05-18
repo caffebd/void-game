@@ -42,7 +42,6 @@ func _player_won():
 	
 #	call_deferred("_win_scene")
 	
-	
 func _win_scene():
 	get_tree().change_scene("res://scenes/win_scene.tscn")
 
@@ -55,7 +54,7 @@ func _respown_point(position):
 #	$playercollision.disabled = true
 
 func _player_reset():
-	
+	GlobalVariables.player_moving = false
 #	if at_point == true:
 	direction = Vector2.ZERO
 	#$PortalSound.play()
@@ -68,7 +67,7 @@ func _player_reset():
 	tween.tween_property($CPUParticles2D, "modulate:a", 0.0, 1.0)
 	yield(tween, "finished")
 	visible = false
-	GlobalVariables.player_moving = false
+	
 	call_deferred("_spown")
 #		global_position = start_position
 	
@@ -85,8 +84,9 @@ func _spown():
 	$CPUParticles2D.emitting = false
 	$playercollision.disabled = false
 	$audio/respawn.stop()
-	GlobalVariables.player_moving = true
 	$CPUParticles2D.modulate.a = 255
+	GlobalVariables.player_moving = true
+	
 
 
 
@@ -166,7 +166,6 @@ func _physics_process(delta):
 	
 	direction = move_and_slide(direction,  Vector2.UP)
 	
-
 
 func _on_WinTimer_timeout():
 	call_deferred("_win_scene")
