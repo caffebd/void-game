@@ -33,6 +33,13 @@ margin_right = 680.0
 margin_bottom = 389.168
 color = Color( 0.0745098, 0.0705882, 0.211765, 1 )
 
+[node name="ColorRect4" type="ColorRect" parent="ColorRect"]
+margin_left = 344.0
+margin_top = 425.0
+margin_right = 680.0
+margin_bottom = 521.0
+color = Color( 0.0745098, 0.0705882, 0.211765, 1 )
+
 [node name="ColorRect3" type="ColorRect" parent="ColorRect"]
 margin_left = 112.0
 margin_top = 40.0
@@ -62,6 +69,18 @@ margin_bottom = 72.0
 custom_fonts/font = SubResource( 2 )
 text = "Play"
 
+[node name="Cradits" type="Button" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -151.0
+margin_top = 144.0
+margin_right = 152.0
+margin_bottom = 207.0
+custom_fonts/font = SubResource( 2 )
+text = "Credits"
+
 [node name="MenuSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 521, 267 )
 stream = ExtResource( 4 )
@@ -71,3 +90,4 @@ position = Vector2( 519, 343 )
 stream = ExtResource( 5 )
 
 [connection signal="pressed" from="ColorRect/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="ColorRect/Cradits" to="." method="_on_Cradits_pressed"]
